@@ -1,1 +1,7 @@
-# WEBTE1-Zaverecne-zadanie
+# Crazy highway
+
+## Základný popis
+
+- [x] aaa
+- [ ] bbb 
+
