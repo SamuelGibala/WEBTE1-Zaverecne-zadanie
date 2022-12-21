@@ -53,18 +53,22 @@ bude predstavovať číslo daného obrázka, čo značne zjednoduší konverziu 
 
 ### JSON
 
-Základné prvky hry, ktorými sú konverzná tabuľka/pole a jednotlivé levely sú definované v JSON dokumente
+Základné prvky hry, ktorými sú konverzná tabuľka/pole, alternatívny text a jednotlivé levely sú definované v JSON dokumente
 so štruktúrou:
 
 ```json
 
 {
    "conversion_table": 
-   [ "../img/cesta.jpg" ,
-   "../img/diera.jpg" ,
-   "../img/konar.jpg" ,
-   "../img/kuzel.jpg" ,
-   "../img/ ... .jpg" ],
+   [ "../img/cesta.jpg" , 
+     "../img/diera.jpg" , 
+     "../img/konar.jpg" , 
+     "../img/kuzel.jpg" ,
+     "../img/ ... .jpg" ],
+   "alt": ["cesta",
+     "diera na ceste",
+     "konár na ceste",
+     "kúžel na ceste",...],
    "levels": [
    [[4,4,4],
     [1,0,2],
@@ -90,7 +94,7 @@ so štruktúrou:
 
 ### Todo list:
 
-- [ ] Vytvoriť validný JSON levelov a konverznej tabuľky
+- [x] Vytvoriť validný JSON levelov a konverznej tabuľky
 - [ ] Načítanie JSON a rozparsovanie do použiteľných polí
 - [ ] Dynamické vytvorenie polí (div) v hlavnom okne hry podľa šírky herného pola
 - [ ] Výpis aktuálneho stavu cesty
