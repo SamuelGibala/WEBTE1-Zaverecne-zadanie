@@ -96,7 +96,7 @@ so štruktúrou:
 
 - [x] Vytvoriť validný JSON levelov a konverznej tabuľky
 - [x] Načítanie JSON a rozparsovanie do použiteľných polí
-- [ ] Dynamické vytvorenie polí (div) v hlavnom okne hry podľa šírky herného pola
+- [x] Dynamické vytvorenie polí (div) v hlavnom okne hry podľa šírky herného pola
 - [ ] Výpis aktuálneho stavu cesty
 - [ ] Pravidelná zmena pola aktuálnej časti cesty, ktorú používateľ vidí a výpis pomocou funkcie definovanej vyššie
 - [ ] Definovanie listenera na klávestnicu

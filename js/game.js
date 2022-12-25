@@ -4,8 +4,11 @@ var level = 1;
 var currentLevel;
 var conversionTable = data.conversion_table;
 var alternativeText = data.alt;
-var screenWidth = window.outerWidth;
-var screenHeight = window.outerHeight
+var screenWidth = window.innerWidth;
+var screenHeight = window.innerHeight
+var segments = [];
+var gameHeight;
+var gameWidth;
 
 
 
@@ -14,40 +17,59 @@ function loadLevel(level){
 }
 
 function makeGrid(){
-    setWidthHeight();
-
-}
-
-
-function setWidthHeight(){
     let Ncolumns = currentLevel[0].length;
+    setWidthHeight(Ncolumns);
 
-    if (screenWidth>screenHeight) {
-        let side = screenHeight/4;
-        game.style.width = String(Ncolumns*side + "px");
-        game.style.height = String(screenHeight + "px");
-    }else {
-        if ((screenHeight/4)*Ncolumns <= screenWidth){
-            let side = screenHeight/4;
-            game.style.width = String(Ncolumns*side + "px");
-            game.style.height = String(screenHeight + "px");
-        }else {
-            let side = screenWidth/Ncolumns;
-            game.style.width = String(screenWidth + "px");
-            game.style.height = String(side*4 + "px");
-            game.style.marginTop = String((screenHeight-side*4)/2 + "px")
-        }
+    for (let i=0;i<Ncolumns*4;i++){
+        segments[i] = document.createElement('div');
+        segments[i].setAttribute('class','segment');
+        segments[i].style.width = String(gameWidth/Ncolumns + "px");
+        segments[i].style.height = String(gameHeight/4 + "px");
+        game.appendChild(segments[i]);
     }
 }
 
-loadLevel(1);
+function updateGrid(){
+    let Ncolumns = currentLevel[0].length;
+    setWidthHeight(Ncolumns);
+    for (let i=0;i<Ncolumns*4;i++){
+        segments[i].style.width = String(gameWidth/Ncolumns + "px");
+        segments[i].style.height = String(gameHeight/4 + "px");
+    }
+
+}
+
+
+function setWidthHeight(Ncolumns){
+
+    if (screenWidth>screenHeight) {
+        let side = screenHeight/4;
+        gameHeight = screenHeight;
+        gameWidth = Ncolumns*side;
+    }else {
+        if ((screenHeight/4)*Ncolumns <= screenWidth){
+            let side = screenHeight/4;
+            gameHeight = screenHeight;
+            gameWidth = Ncolumns*side;
+        }else {
+            let side = screenWidth/Ncolumns;
+            gameHeight = side*4;
+            gameWidth = screenWidth;
+            game.style.marginTop = String((screenHeight-gameHeight)/2 + "px")
+        }
+    }
+
+    game.style.width = String(gameWidth + "px");
+    game.style.height = String(gameHeight + "px");
+}
+
+loadLevel(10);
 makeGrid();
 
 
 window.addEventListener("resize",function (){
-    console.log(screenWidth = window.outerWidth);
-    console.log(screenHeight = window.outerHeight);
-    loadLevel(1);
-    makeGrid();
+    screenWidth = window.innerWidth;
+    screenHeight = window.innerHeight
+    updateGrid();
 })
 
