@@ -40,6 +40,9 @@ function setWidthHeight(){
     }
 }
 
+loadLevel(1);
+makeGrid();
+
 
 window.addEventListener("resize",function (){
     console.log(screenWidth = window.outerWidth);
