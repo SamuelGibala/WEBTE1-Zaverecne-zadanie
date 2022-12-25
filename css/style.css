@@ -3,24 +3,42 @@ img{
     height: 100%;
 }
 
+body{
+    height: 100%;
+    margin: 0;
+}
+
 #game{
-    width: 900px;
+    margin: auto;
+    background: red;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
-    padding: 0;
-    margin: 0;
+    gap: 0;
 
 }
 
-.segment{
-    width: calc(100%/2);
-    height: calc(100%/2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    margin: -1px;
+/*@media screen and (max-width: 400px){
+    #game{
+        width: 100vw;
+        margin: 0;
+    }
+}
 
+@media screen and (min-width: 1000px){
+    #game{
+        width: 60%;
+        margin: 0 20%;
+    }
+}
+
+@media screen and (min-width: 1500px){
+    #game{
+        width: 50%;
+        margin: 0 25%;
+    }
+}*/
+
+.segment{
+    display: inline-block;
+    margin: -1px;
 }
