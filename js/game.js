@@ -7,10 +7,32 @@ var alternativeText = data.alt;
 var screenWidth = window.innerWidth;
 var screenHeight = window.innerHeight
 var segments = [];
+var photos = [];
 var gameHeight;
 var gameWidth;
+var actualState = [];
+var actualLevelLength;
 
 
+function fillState(actualPosition){
+    let Ncolumns = currentLevel[0].length;
+    let poc = 0;
+    for (let i=3+actualPosition;i>=0+actualPosition;i--){
+        for (let j = Ncolumns-1; j>=0; j--){
+            actualState[poc] = currentLevel[i][j];
+            poc++;
+        }
+    }
+
+}
+
+function fillGrid(){
+    let Ncolumns = currentLevel[0].length;
+    for (let i=0;i<Ncolumns*4;i++){
+        photos[i].setAttribute('src',conversionTable[actualState[i]])
+        photos[i].setAttribute('alt',alternativeText[actualState[i]])
+    }
+}
 
 function loadLevel(level){
     currentLevel = data.levels[level-1];
@@ -25,6 +47,9 @@ function makeGrid(){
         segments[i].setAttribute('class','segment');
         segments[i].style.width = String(gameWidth/Ncolumns + "px");
         segments[i].style.height = String(gameHeight/4 + "px");
+        photos[i] = document.createElement('img');
+        photos[i].setAttribute('class','photos')
+        segments[i].appendChild(photos[i]);
         game.appendChild(segments[i]);
     }
 }
@@ -63,8 +88,10 @@ function setWidthHeight(Ncolumns){
     game.style.height = String(gameHeight + "px");
 }
 
-loadLevel(10);
+loadLevel(2);
 makeGrid();
+fillState(3);
+fillGrid();
 
 
 window.addEventListener("resize",function (){
