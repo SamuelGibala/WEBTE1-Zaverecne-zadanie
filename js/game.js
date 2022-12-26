@@ -11,8 +11,16 @@ var photos = [];
 var gameHeight;
 var gameWidth;
 var actualState = [];
+var actualPosition = 0;
 var actualLevelLength;
+var changeTime = 1000;
 
+
+
+
+function setLevelLength(){
+    actualLevelLength = currentLevel.length;
+}
 
 function fillState(actualPosition){
     let Ncolumns = currentLevel[0].length;
@@ -88,10 +96,19 @@ function setWidthHeight(Ncolumns){
     game.style.height = String(gameHeight + "px");
 }
 
-loadLevel(2);
+loadLevel(1);
 makeGrid();
-fillState(3);
-fillGrid();
+setLevelLength();
+var myInterval = setInterval(function (){
+    fillState(actualPosition)
+    fillGrid()
+    console.log(actualLevelLength);
+    console.log(actualPosition);
+    actualPosition++;
+    if (actualPosition===actualLevelLength-3)
+        clearInterval(myInterval);
+
+},changeTime)
 
 
 window.addEventListener("resize",function (){
