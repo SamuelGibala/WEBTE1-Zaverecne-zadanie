@@ -1,4 +1,5 @@
 import data from '../json/game.json' assert {type: 'json'};
+
 var game = document.getElementById("game");
 var level = 1;
 var currentLevel;
@@ -96,8 +97,25 @@ function setWidthHeight(Ncolumns){
     game.style.height = String(gameHeight + "px");
 }
 
-loadLevel(1);
-makeGrid();
+function menu(){
+    game.innerHTML = "";
+    makeGrid();
+
+    let N = currentLevel[0].length * 4
+
+    for (let i = 0; i < N; i++) {
+        actualState[i] = 0;
+    }
+
+    actualState[actualState.length-1] = 5;
+
+    fillGrid();
+
+}
+
+loadLevel(level);
+
+/*makeGrid();
 setLevelLength();
 var myInterval = setInterval(function (){
     fillState(actualPosition)
@@ -109,7 +127,9 @@ var myInterval = setInterval(function (){
         clearInterval(myInterval);
 
 },changeTime)
+*/
 
+menu();
 
 window.addEventListener("resize",function (){
     screenWidth = window.innerWidth;
