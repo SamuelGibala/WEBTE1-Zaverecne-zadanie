@@ -99,8 +99,8 @@ so štruktúrou:
 - [x] Dynamické vytvorenie polí (div) v hlavnom okne hry podľa šírky herného pola
 - [x] Výpis aktuálneho stavu cesty
 - [x] Pravidelná zmena pola aktuálnej časti cesty, ktorú používateľ vidí a výpis pomocou funkcie definovanej vyššie
-- [ ] Definovanie listenera na klávestnicu
-- [ ] Definovanie listenera na swipe
+- [x] Definovanie listenera na klávestnicu
+- [x] Definovanie listenera na swipe
 - [ ] Definovanie listenera na gyroskop (acceleration including gravity - zmena prvého parametra)
 - [ ] prepínanie levelov pri prejdení levelu a zopakovanie pri neprejdení
 - [ ] tlačidlo pomôcky, ktoré zastaví hru a zobrazí modalne okno s tutorialom ako hrat hru

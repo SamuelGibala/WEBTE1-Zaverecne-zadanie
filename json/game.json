@@ -1,15 +1,15 @@
 {
   "conversion_table":
-  [ "../img/cesta.jpg" ,
-    "../img/diera.jpg" ,
-    "../img/konar.jpg" ,
-    "../img/kuzel.jpg" ,
-    "../img/ciel.jpg",
-    "../img/auto_na_ceste.jpg",
-    "../img/auto_v_diere.jpg",
-    "../img/auto_s_konarom.jpg",
-    "../img/auto_s_kuzelom.jpg",
-    "../img/auto_v_cieli.jpg"
+  [ "./img/cesta.jpg" ,
+    "./img/diera.jpg" ,
+    "./img/konar.jpg" ,
+    "./img/kuzel.jpg" ,
+    "./img/ciel.jpg",
+    "./img/auto_na_ceste.jpg",
+    "./img/auto_v_diere.jpg",
+    "./img/auto_s_konarom.jpg",
+    "./img/auto_s_kuzelom.jpg",
+    "./img/auto_v_cieli.jpg"
   ],
   "alt": ["cesta",
     "diera na ceste",

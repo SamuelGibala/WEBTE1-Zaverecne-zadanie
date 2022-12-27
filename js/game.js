@@ -117,3 +117,18 @@ window.addEventListener("resize",function (){
     updateGrid();
 })
 
+document.addEventListener('keydown',function (e){
+   if (e.code === 'ArrowLeft')
+       console.log("left");
+   else if (e.code==="ArrowRight")
+       console.log("right");
+})
+
+document.addEventListener('swiped-left',function (e){
+    alert("left");
+})
+
+document.addEventListener('swiped-right',function (e){
+    alert("right");
+})
+
