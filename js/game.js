@@ -1,7 +1,7 @@
 import data from '../json/game.json' assert {type: 'json'};
 
 var game = document.getElementById("game");
-var level = 5;
+var level = 10;
 var currentLevel;
 var conversionTable = data.conversion_table;
 var alternativeText = data.alt;
@@ -14,7 +14,7 @@ var gameWidth;
 var actualState = [];
 var actualPosition = -1;
 var actualLevelLength;
-var changeTime = 1000;
+var changeTime = 500;
 var carPosition = 1;
 
 
