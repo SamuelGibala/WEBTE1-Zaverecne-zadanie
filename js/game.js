@@ -1,7 +1,7 @@
 import data from '../json/game.json' assert {type: 'json'};
 
 var game = document.getElementById("game");
-var level = 1;
+var level = 3;
 var currentLevel;
 var conversionTable = data.conversion_table;
 var alternativeText = data.alt;
@@ -147,7 +147,7 @@ function prvky(){
     const play=document.createElement("div");
     play.setAttribute("class","play");
     play.addEventListener("click",function (){
-        startGame();
+        playGame();
     })
     const help=document.createElement("div");
     help.setAttribute("class","help");
@@ -209,8 +209,9 @@ function carMoveLeft(){
     }
 }
 
-function play(){
-    loadLevel(level);
+function playGame(){
+    game.innerHTML = "";
+    actualState[actualState.length-1] = 0;
     makeGrid();
     setLevelLength();
     fillState(0);
@@ -225,23 +226,6 @@ function play(){
             clearInterval(myInterval);
 
     },changeTime)
-}
-
-play();
-
-loadLevel(level);
-menu();
-
-function startGame(){
-    game.innerHTML = "";
-    actualState[actualState.length-1] = 0;
-    makeGrid();
-    fillGrid();
-    setLevelLength();
-    fillState(0);
-    putCar(carPosition);
-    fillGrid();
-    setCycle();
     const helpInGame=document.createElement("div");
     helpInGame.setAttribute("class","helpingame");
     helpInGame.onclick = function (){
@@ -250,16 +234,10 @@ function startGame(){
     helpInGame.style.width = String(gameWidth/5 + "px");
     helpInGame.style.height = String(gameHeight/11 + "px");
     game.appendChild(helpInGame);
-
 }
-/*makeGrid();
-setLevelLength();
-fillState(0);
-putCar(carPosition);
-fillGrid();
-setCycle();*/
 
-
+loadLevel(level);
+menu();
 
 window.addEventListener("resize",function (){
     screenWidth = window.innerWidth;
