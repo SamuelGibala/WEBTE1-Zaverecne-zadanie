@@ -46,7 +46,7 @@ function fillState(actualPosition){
                     console.log("win");
                     clearInterval(myInterval);
                     listenersAllowed = false;
-                    if(level<11) {
+                    if(level<10) {
                         level++;
                     }
                     console.log(level);
