@@ -1,7 +1,7 @@
 import data from '../json/game.json' assert {type: 'json'};
 
 var game = document.getElementById("game");
-var level = 3;
+var level = 9;
 var currentLevel;
 var conversionTable = data.conversion_table;
 var alternativeText = data.alt;
@@ -46,6 +46,13 @@ function fillState(actualPosition){
                     console.log("win");
                     clearInterval(myInterval);
                     listenersAllowed = false;
+                    resetAll();
+                    level++;
+                    console.log(level);
+                    if (level>=11)
+                        level = 10;
+                    menu();
+
                 }else {
                     console.log("boom");
                     clearInterval(myInterval);
@@ -67,6 +74,28 @@ function fillGrid(){
         photos[i].setAttribute('src',conversionTable[actualState[i]])
         photos[i].setAttribute('alt',alternativeText[actualState[i]])
     }
+}
+
+function resetAll(){
+    let Nsegments = segments.length;
+
+    for (let i = 0; i < Nsegments; i++) {
+        while (segments[i].hasChildNodes()){
+            segments[i].removeChild(segments[i].firstChild);
+        }
+    }
+
+    while (game.hasChildNodes()){
+        game.removeChild(game.firstChild)
+    }
+
+    segments = [];
+    photos = [];
+    actualState = [];
+    actualPosition = -1;
+    carPosition = 1;
+    listenersAllowed = true;
+
 }
 
 function loadLevel(level){
@@ -125,6 +154,7 @@ function setWidthHeight(Ncolumns){
 
 function menu(){
     game.innerHTML = "";
+    loadLevel(level);
     makeGrid();
 
     let N = currentLevel[0].length * 4
@@ -236,7 +266,6 @@ function playGame(){
     game.appendChild(helpInGame);
 }
 
-loadLevel(level);
 menu();
 
 window.addEventListener("resize",function (){
