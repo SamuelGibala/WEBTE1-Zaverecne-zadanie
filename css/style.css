@@ -135,4 +135,5 @@ body{
 img#back{
     width: 10%;
     height: 10%;
+    margin: -1px;
 }

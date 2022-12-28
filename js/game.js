@@ -1,7 +1,7 @@
 import data from '../json/game.json' assert {type: 'json'};
 
 var game = document.getElementById("game");
-var level = 5;
+var level = 1;
 var currentLevel;
 var conversionTable = data.conversion_table;
 var alternativeText = data.alt;
@@ -14,10 +14,12 @@ var gameWidth;
 var actualState = [];
 var actualPosition = -1;
 var actualLevelLength;
-var changeTime = 1000;
+var changeTime = 500;
 var carPosition = 1;
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
+var listenersAllowed = true;
+var myInterval;
 
 
 
@@ -37,7 +39,19 @@ function fillState(actualPosition){
     for (let i=3+actualPosition;i>=0+actualPosition;i--){
         for (let j = Ncolumns-1; j>=0; j--){
             if(actualState[poc]>4){
-                actualState[poc] = currentLevel[i][j]+5;
+                actualState[poc] = currentLevel[i][j] + 5;
+                if (actualState[poc]===5) {
+
+                }else if(actualState[poc]===9){
+                    console.log("win");
+                    clearInterval(myInterval);
+                    listenersAllowed = false;
+                }else {
+                    console.log("boom");
+                    clearInterval(myInterval);
+                    listenersAllowed = false;
+                }
+
             }else {
                 actualState[poc] = currentLevel[i][j];
             }
@@ -195,8 +209,15 @@ function carMoveLeft(){
     }
 }
 
-function setCycle(){
-    var myInterval = setInterval(function (){
+function play(){
+    loadLevel(level);
+    makeGrid();
+    setLevelLength();
+    fillState(0);
+    putCar(carPosition);
+    fillGrid();
+    listenersAllowed = true;
+    myInterval = setInterval(function (){
         actualPosition++;
         fillState(actualPosition)
         fillGrid()
@@ -245,22 +266,28 @@ window.addEventListener("resize",function (){
 })
 
 document.addEventListener('keydown',function (e){
-   if (e.code === 'ArrowLeft')
-       carMoveLeft();
+   if(listenersAllowed) {
+       if (e.code === 'ArrowLeft')
+           carMoveLeft();
 
-   else if (e.code==="ArrowRight")
-       carMoveRight();
-   reprint();
+       else if (e.code === "ArrowRight")
+           carMoveRight();
+       reprint();
+   }
 })
 
 document.addEventListener('swiped-left',function (e){
-    carMoveLeft();
-    reprint();
+    if(listenersAllowed) {
+        carMoveLeft();
+        reprint();
+    }
 })
 
 document.addEventListener('swiped-right',function (e){
-    carMoveRight();
-    reprint();
+    if(listenersAllowed) {
+        carMoveRight();
+        reprint();
+    }
 })
 
 
