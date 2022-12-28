@@ -16,6 +16,8 @@ var actualPosition = -1;
 var actualLevelLength;
 var changeTime = 1000;
 var carPosition = 1;
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
 
 
 
@@ -120,7 +122,46 @@ function menu(){
     actualState[actualState.length-1] = 5;
 
     fillGrid();
+    prvky();
 
+
+}
+function prvky(){
+    const title = document.createElement("div");
+    title.setAttribute("class","title");
+
+    const play=document.createElement("div");
+    play.setAttribute("class","play");
+    play.addEventListener("click",function (){
+        startGame();
+    })
+    const help=document.createElement("div");
+    help.setAttribute("class","help");
+    help.onclick = function (){
+        modal.style.display = "block";
+    }
+    modalWindow()
+
+    game.appendChild(title);
+    game.appendChild(play);
+    game.appendChild(help);
+}
+function modalWindow(){
+    var lol = document.createElement("info");
+    lol.innerHTML = "<br><br> Crazy highway <br> Cieľom hry je prejsť s autíčkom až do cieľa. Na dráhe ho, ale čaká veľa prekážok ktorým sa musí vyhnúť. <br> Pohyb autíčka: <br> Ovládanie pomocou šípok doprava a doľava <br> Swipe doprava a doľava na telefóne <br> Prajeme vám zábavu pri hraní hry!!!!";
+
+
+    var modalContent = document.getElementById("modal-content");
+    modalContent.appendChild(lol);
+    modalContent.classList.add("modal-content");
+
+    let myModal = document.getElementById("myModal");
+    myModal.appendChild(modalContent);
+
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 }
 
 function putCar(pos){
@@ -166,13 +207,34 @@ function setCycle(){
 }
 
 loadLevel(level);
+menu();
 
-makeGrid();
+function startGame(){
+    game.innerHTML = "";
+    actualState[actualState.length-1] = 0;
+    makeGrid();
+    fillGrid();
+    setLevelLength();
+    fillState(0);
+    putCar(carPosition);
+    fillGrid();
+    setCycle();
+    const helpInGame=document.createElement("div");
+    helpInGame.setAttribute("class","helpingame");
+    helpInGame.onclick = function (){
+        modal.style.display = "block";
+    }
+    helpInGame.style.width = String(gameWidth/5 + "px");
+    helpInGame.style.height = String(gameHeight/11 + "px");
+    game.appendChild(helpInGame);
+
+}
+/*makeGrid();
 setLevelLength();
 fillState(0);
 putCar(carPosition);
 fillGrid();
-setCycle();
+setCycle();*/
 
 
 
@@ -200,4 +262,5 @@ document.addEventListener('swiped-right',function (e){
     carMoveRight();
     reprint();
 })
+
 
