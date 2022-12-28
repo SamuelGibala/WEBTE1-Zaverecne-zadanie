@@ -227,6 +227,8 @@ function play(){
     },changeTime)
 }
 
+play();
+
 loadLevel(level);
 menu();
 
