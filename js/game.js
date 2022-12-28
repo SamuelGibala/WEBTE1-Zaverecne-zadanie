@@ -49,8 +49,10 @@ function fillState(actualPosition){
                     if(level<10) {
                         level++;
                     }
+                    //odtialto
                     console.log(level);
                     nextLevel();
+                    //potialto vymazat
                     //TODO show modal next level, onclick nextLevel()
 
 
@@ -58,8 +60,10 @@ function fillState(actualPosition){
                     console.log("boom");
                     clearInterval(myInterval);
                     listenersAllowed = false;
+                    //odtialto
                     console.log(level);
                     nextLevel();
+                    //potialto vymazat
                     //TODO show modal replay level, onclick nextLevel()
                 }
 
