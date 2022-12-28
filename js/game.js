@@ -1,7 +1,7 @@
 import data from '../json/game.json' assert {type: 'json'};
 
 var game = document.getElementById("game");
-var level = 9;
+var level = 1;
 var currentLevel;
 var conversionTable = data.conversion_table;
 var alternativeText = data.alt;
@@ -46,17 +46,21 @@ function fillState(actualPosition){
                     console.log("win");
                     clearInterval(myInterval);
                     listenersAllowed = false;
-                    resetAll();
-                    level++;
+                    if(level<11) {
+                        level++;
+                    }
                     console.log(level);
-                    if (level>=11)
-                        level = 10;
-                    menu();
+                    nextLevel();
+                    //TODO show modal next level, onclick nextLevel()
+
 
                 }else {
                     console.log("boom");
                     clearInterval(myInterval);
                     listenersAllowed = false;
+                    console.log(level);
+                    nextLevel();
+                    //TODO show modal replay level, onclick nextLevel()
                 }
 
             }else {
@@ -96,6 +100,12 @@ function resetAll(){
     carPosition = 1;
     listenersAllowed = true;
 
+}
+
+function nextLevel(){
+    resetAll();
+    loadLevel(level);
+    playGame();
 }
 
 function loadLevel(level){
