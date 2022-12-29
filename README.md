@@ -102,11 +102,12 @@ so štruktúrou:
 - [x] Definovanie listenera na klávestnicu
 - [x] Definovanie listenera na swipe
 - [ ] Definovanie listenera na gyroskop (acceleration including gravity - zmena prvého parametra)
-- [ ] prepínanie levelov pri prejdení levelu a zopakovanie pri neprejdení
-- [ ] tlačidlo pomôcky, ktoré zastaví hru a zobrazí modalne okno s tutorialom ako hrat hru
+- [x] prepínanie levelov pri prejdení levelu a zopakovanie pri neprejdení
+- [x] tlačidlo pomôcky, ktoré zastaví hru a zobrazí modalne okno s tutorialom ako hrat hru
 - [x] úvodné menu dynamicky vytvárané
 - [ ] progresívna web aplikácia
 - [x] favicon
+- [x] cookies
 - [ ] optimalizácia pre tlač
 
 
