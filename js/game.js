@@ -54,6 +54,7 @@ getJson().then((data)=>{
                         listenersAllowed = false;
                         if(level<10) {
                             level++;
+                            setLevelCookie();
                         }
     
                         var divko = document.createElement("div");
@@ -303,7 +304,40 @@ getJson().then((data)=>{
         game.appendChild(helpInGame);
     }
 
-    menu();
+    function setCookie(cname,cvalue) {
+        document.cookie = cname + "=" + cvalue + ";";
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function checkCookie() {
+        let cookieLevel = getCookie("level");
+        if (cookieLevel !== "") {
+            level = parseInt(cookieLevel);
+            //setCookie("level", level);
+        } else {
+            level = 1;
+            setCookie("level", level);
+        }
+    }
+
+    function setLevelCookie(){
+        setCookie("level",level);
+    }
 
     window.addEventListener("resize",function (){
         screenWidth = window.innerWidth;
@@ -322,19 +356,23 @@ getJson().then((data)=>{
        }
     })
 
-    document.addEventListener('swiped-left',function (e){
+    document.addEventListener('swiped-left',function (){
         if(listenersAllowed) {
             carMoveLeft();
             reprint();
         }
     })
 
-    document.addEventListener('swiped-right',function (e){
+    document.addEventListener('swiped-right',function (){
         if(listenersAllowed) {
             carMoveRight();
             reprint();
         }
     })
+
+    // core code HERE
+    checkCookie();
+    menu();
 })
 
 
