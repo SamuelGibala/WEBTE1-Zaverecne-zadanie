@@ -28,9 +28,9 @@ getJson().then((data)=>{
     var myInterval;
     var stopped = false;
     var inBetween = false;
-
-
-
+    var beta;
+    var gamma;
+    var moved = false
 
     function setLevelLength(){
         actualLevelLength = currentLevel.length;
@@ -394,6 +394,28 @@ getJson().then((data)=>{
             reprint();
         }
     })
+
+    function handleOrientation(event){
+
+        beta = event.beta;
+        gamma = event.gamma;
+        if (beta<45 && gamma<-10) {
+            if (!moved){
+                carMoveLeft();
+                moved = true;
+            }
+        } else if(beta<45 && gamma>10) {
+            if (!moved){
+                carMoveRight();
+                moved = true;
+            }
+
+        } else if (beta>55){
+            moved = false;
+        }
+    }
+
+    window.addEventListener("deviceorientation", handleOrientation);
 
     // core code HERE
     checkCookie();
