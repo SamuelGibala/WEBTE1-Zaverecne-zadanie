@@ -120,7 +120,7 @@ body{
     background-size: 90%;
     width: 40%;
     height: 12%;
-    margin-top: 62%;
+    margin-top: 64%;
     margin-left: 30%;
     margin-right: 30%;
     z-index: 9;
@@ -132,7 +132,7 @@ body{
     background-color: rgba(170, 170, 170, 0.92);
     width: 50%;
     height: 45%;
-    margin-top: 30%;
+    margin-top: 32%;
     margin-left: 25%;
     margin-right: 25%;
     z-index: 8;
@@ -143,12 +143,12 @@ body{
     position: absolute;
     text-align: center;
     width: 40%;
-    height: 20%;
+    height: 10%;
     margin-top: 45%;
     margin-left: 30%;
     margin-right: 30%;
     color: #3176fb;
-    font-size: 150%;
+    font-size: 140%;
     z-index: 9;
 }
 
@@ -195,4 +195,52 @@ img#back{
     width: 10%;
     height: 10%;
     margin: -1px;
+}
+@media screen and (max-width: 600px) {
+    .pi {
+        font-size: 100%;
+    }
+    .helpingame{
+        background-size: 30%;
+    }
+}
+@media screen and (max-width: 230px) {
+    .pi {
+        font-size: 50%;
+    }
+    .helpingame{
+        background-size: 20%;
+    }
+}
+@media screen and (max-width: 160px) {
+    .pi {
+        font-size: 30%;
+    }
+    .helpingame{
+        background-size: 10%;
+    }
+}
+@media screen and (max-height: 650px) {
+    .pi {
+        font-size: 100%;
+    }
+    .helpingame{
+        background-size: 30%;
+    }
+}
+@media screen and (max-height: 460px) {
+    .pi {
+        font-size: 70%;
+    }
+    .helpingame{
+        background-size: 20%;
+    }
+}
+@media screen and (max-height: 240px) {
+    .pi {
+        font-size: 30%;
+    }
+    .helpingame{
+        background-size: 10%;
+    }
 }

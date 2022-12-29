@@ -6,6 +6,9 @@
     <script src="js/swiped-events.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="img/autoFavicon.jpg">
+    <meta name="theme-color" content="#3176fb">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="img/auto192x192.png">
     <title>Menu</title>
 </head>
 <body>
@@ -17,7 +20,18 @@
         <span class="close"><img id="back" src="img/back.png" alt="close"></span>
     </div>
 </div>
-<script type="module" src="./js/game.js"></script>
+<script type="module" src="js/game.js"></script>
+<script>
+    if ("serviceWorker" in navigator){
+        navigator.serviceWorker.register("sw.js").then(registration =>{
+            console.log("SW registred!");
+            console.log(registration);
+        }).catch(error =>{
+            console.log("SW registration failed!");
+            console.log(error);
+        });
+    }
+</script>
 </body>
 </html>
 

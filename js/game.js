@@ -420,6 +420,8 @@ getJson().then((data)=>{
     // core code HERE
     checkCookie();
     menu();
+
 })
+
 
 
