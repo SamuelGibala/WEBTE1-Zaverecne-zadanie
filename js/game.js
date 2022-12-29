@@ -26,6 +26,8 @@ getJson().then((data)=>{
     var span = document.getElementsByClassName("close")[0];
     var listenersAllowed = false;
     var myInterval;
+    var stopped = false;
+    var inBetween = false;
 
 
 
@@ -51,6 +53,7 @@ getJson().then((data)=>{
                     }else if(actualState[poc]===9){
                         console.log("win");
                         clearInterval(myInterval);
+                        inBetween = true;
                         listenersAllowed = false;
                         if(level<10) {
                             level++;
@@ -65,6 +68,7 @@ getJson().then((data)=>{
                         var neLevel = document.createElement("div");
                         neLevel.setAttribute("class","nextlevel");
                         neLevel.addEventListener("click",function (){
+                            inBetween = false;
                             nextLevel();
                         })
                         game.appendChild(divko);
@@ -74,6 +78,7 @@ getJson().then((data)=>{
                     }else {
                         console.log("boom");
                         clearInterval(myInterval);
+                        inBetween = true
                         listenersAllowed = false;
 
                         var divko = document.createElement("div");
@@ -84,6 +89,7 @@ getJson().then((data)=>{
                         var tryLevel = document.createElement("div");
                         tryLevel.setAttribute("class","trylevel");
                         tryLevel.addEventListener("click",function (){
+                            inBetween = false;
                             nextLevel();
                         })
                         game.appendChild(divko);
@@ -243,6 +249,12 @@ getJson().then((data)=>{
 
         span.onclick = function() {
             modal.style.display = "none";
+            if (stopped && !inBetween){
+                stopped = false;
+                listenersAllowed = true;
+                setTimer();
+                setTimeout(function (){},2000)
+            }
         }
     }
 
@@ -277,6 +289,23 @@ getJson().then((data)=>{
         }
     }
 
+    function setTimer(){
+        myInterval = setInterval(function (){
+            actualPosition++;
+            fillState(actualPosition)
+            fillGrid()
+            if (actualPosition===actualLevelLength-4)
+                clearInterval(myInterval);
+
+        },changeTime)
+    }
+
+    function stopGame(){
+        listenersAllowed = false;
+        clearInterval(myInterval);
+        stopped = true;
+    }
+
     function playGame(){
         game.innerHTML = "";
         actualState[actualState.length-1] = 0;
@@ -286,17 +315,13 @@ getJson().then((data)=>{
         putCar(carPosition);
         fillGrid();
         listenersAllowed = true;
-        myInterval = setInterval(function (){
-            actualPosition++;
-            fillState(actualPosition)
-            fillGrid()
-            if (actualPosition===actualLevelLength-4)
-                clearInterval(myInterval);
-
-        },changeTime)
+        setTimer();
         const helpInGame=document.createElement("div");
         helpInGame.setAttribute("class","helpingame");
         helpInGame.onclick = function (){
+            if (!inBetween) {
+                stopGame();
+            }
             modal.style.display = "block";
         }
         helpInGame.style.width = String(gameWidth/5 + "px");
