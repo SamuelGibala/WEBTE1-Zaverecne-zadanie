@@ -1,4 +1,5 @@
 import data from '../json/game.json' assert {type: 'json'};
+
 var game = document.getElementById("game");
 var level = 10;
 var currentLevel;
@@ -42,8 +43,19 @@ function fillState(actualPosition){
                 if (actualState[poc]===5) {
 
                 }else if(actualState[poc]===9){
+                    console.log("win");
                     clearInterval(myInterval);
                     listenersAllowed = false;
+                    if(level<10) {
+                        level++;
+                    }
+                    //odtialto
+                    console.log(level);
+                    nextLevel();
+                    //potialto vymazat
+                    //TODO show modal next level, onclick nextLevel()
+
+
                     var divko = document.createElement("div");
                     divko.setAttribute("class","divko");
                     var info = document.createElement("p");
@@ -62,6 +74,11 @@ function fillState(actualPosition){
                     console.log("boom");
                     clearInterval(myInterval);
                     listenersAllowed = false;
+                    //odtialto
+                    console.log(level);
+                    nextLevel();
+                    //potialto vymazat
+                    //TODO show modal replay level, onclick nextLevel()
                     var divko = document.createElement("div");
                     divko.setAttribute("class","divko");
                     var infoT = document.createElement("p");
@@ -92,6 +109,34 @@ function fillGrid(){
         photos[i].setAttribute('src',conversionTable[actualState[i]])
         photos[i].setAttribute('alt',alternativeText[actualState[i]])
     }
+}
+
+function resetAll(){
+    let Nsegments = segments.length;
+
+    for (let i = 0; i < Nsegments; i++) {
+        while (segments[i].hasChildNodes()){
+            segments[i].removeChild(segments[i].firstChild);
+        }
+    }
+
+    while (game.hasChildNodes()){
+        game.removeChild(game.firstChild)
+    }
+
+    segments = [];
+    photos = [];
+    actualState = [];
+    actualPosition = -1;
+    carPosition = 1;
+    listenersAllowed = true;
+
+}
+
+function nextLevel(){
+    resetAll();
+    loadLevel(level);
+    playGame();
 }
 
 function loadLevel(level){
@@ -150,6 +195,7 @@ function setWidthHeight(Ncolumns){
 
 function menu(){
     game.innerHTML = "";
+    loadLevel(level);
     makeGrid();
 
     let N = currentLevel[0].length * 4
@@ -261,7 +307,6 @@ function playGame(){
     game.appendChild(helpInGame);
 }
 
-loadLevel(level);
 menu();
 
 window.addEventListener("resize",function (){
