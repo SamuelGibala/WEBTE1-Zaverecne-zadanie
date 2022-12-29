@@ -330,4 +330,12 @@ document.addEventListener('swiped-right',function (e){
     }
 })
 
+navigator.serviceWorker.register('./serviceWorker.js')
+    .then((reg) => {
+        console.log("service worker registered", reg)
+    })
+    .catch((err) => {
+        console.log("error when registering service worker", err)
+    })
+
 
