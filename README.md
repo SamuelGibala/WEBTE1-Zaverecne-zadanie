@@ -104,9 +104,9 @@ so štruktúrou:
 - [ ] Definovanie listenera na gyroskop (acceleration including gravity - zmena prvého parametra)
 - [ ] prepínanie levelov pri prejdení levelu a zopakovanie pri neprejdení
 - [ ] tlačidlo pomôcky, ktoré zastaví hru a zobrazí modalne okno s tutorialom ako hrat hru
-- [ ] úvodné menu dynamicky vytvárané
+- [x] úvodné menu dynamicky vytvárané
 - [ ] progresívna web aplikácia
-- [ ] favicon
+- [x] favicon
 - [ ] optimalizácia pre tlač
 
 

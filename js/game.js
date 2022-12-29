@@ -55,22 +55,39 @@ getJson().then((data)=>{
                         if(level<10) {
                             level++;
                         }
-                        //odtialto
-                        console.log(level);
-                        nextLevel();
-                        //potialto vymazat
-                        //TODO show modal next level, onclick nextLevel()
-
+    
+                        var divko = document.createElement("div");
+                        divko.setAttribute("class","divko");
+                        var info = document.createElement("p");
+                        info.setAttribute("class","pi");
+                        info.innerHTML = "EXCELLENT!!";
+                        var neLevel = document.createElement("div");
+                        neLevel.setAttribute("class","nextlevel");
+                        neLevel.addEventListener("click",function (){
+                            nextLevel();
+                        })
+                        game.appendChild(divko);
+                        game.appendChild(info);
+                        game.appendChild(neLevel);
 
                     }else {
                         console.log("boom");
                         clearInterval(myInterval);
                         listenersAllowed = false;
-                        //odtialto
-                        console.log(level);
-                        nextLevel();
-                        //potialto vymazat
-                        //TODO show modal replay level, onclick nextLevel()
+
+                        var divko = document.createElement("div");
+                        divko.setAttribute("class","divko");
+                        var infoT = document.createElement("p");
+                        infoT.setAttribute("class","pi");
+                        infoT.innerHTML = "OOOOOH CRASH TRY AGAIN!!";
+                        var tryLevel = document.createElement("div");
+                        tryLevel.setAttribute("class","trylevel");
+                        tryLevel.addEventListener("click",function (){
+                            nextLevel();
+                        })
+                        game.appendChild(divko);
+                        game.appendChild(infoT);
+                        game.appendChild(tryLevel);
                     }
 
                 }else {
@@ -211,12 +228,12 @@ getJson().then((data)=>{
         game.appendChild(help);
     }
     function modalWindow(){
-        var lol = document.createElement("info");
-        lol.innerHTML = "<br><br> Crazy highway <br> Cieľom hry je prejsť s autíčkom až do cieľa. Na dráhe ho, ale čaká veľa prekážok ktorým sa musí vyhnúť. <br> Pohyb autíčka: <br> Ovládanie pomocou šípok doprava a doľava <br> Swipe doprava a doľava na telefóne <br> Prajeme vám zábavu pri hraní hry!!!!";
-
-
+        var guide = document.createElement("info");
+        guide.innerHTML = "<br><br> Crazy highway <br> Cieľom hry je prejsť s autíčkom až do cieľa. Na dráhe ho, ale čaká veľa prekážok ktorým sa musí vyhnúť. <br> Pohyb autíčka: <br> Ovládanie pomocou šípok doprava a doľava <br> Swipe doprava a doľava na telefóne <br> Prajeme vám zábavu pri hraní hry!!!!";
+    
+    
         var modalContent = document.getElementById("modal-content");
-        modalContent.appendChild(lol);
+        modalContent.appendChild(guide);
         modalContent.classList.add("modal-content");
 
         let myModal = document.getElementById("myModal");
