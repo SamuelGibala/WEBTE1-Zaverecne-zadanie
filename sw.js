@@ -4,10 +4,10 @@ const files = [
     "js/game.js",
     "js/swiped-events.min.js",
     "css/style.css",
-    "img/auto192x192.jpg",
-    "img/auto256x256.jpg",
-    "img/auto384x384.jpg",
-    "img/auto512x512.jpg",
+    "img/auto192x192.png",
+    "img/auto256x256.png",
+    "img/auto384x384.png",
+    "img/auto512x512.png",
     "img/auto_bez_pozadia.png",
     "img/auto_na_ceste.jpg",
     "img/auto_s_konarom.jpg",
@@ -38,27 +38,14 @@ const files = [
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(cache_container).then(cache => {
-                cache.addAll(files)
-            })
+            return cache.addAll(files)
+        })
     )
 })
 
 self.addEventListener('activate', function(event) {
     console.log("service worker activated", event)
 })
-
-self.addEventListener('fetch', function(event) {
-    event.waitUntil(
-        caches.open(cache_container).then(cache => {
-                cache.addAll(files)
-            })
-    )
-    event.respondWith(
-        caches.match(event.request).then(response => {
-            if (response) {
-                return response
-            }
-        })
-    )
-
-})
+self.addEventListener('fetch', function(event){
+   console.log(`intercepting fetch request for: ${event.request.url}`);
+});

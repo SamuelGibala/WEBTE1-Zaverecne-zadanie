@@ -398,14 +398,8 @@ getJson().then((data)=>{
     // core code HERE
     checkCookie();
     menu();
+
 })
 
-navigator.serviceWorker.register('./serviceWorker.js')
-    .then((reg) => {
-        console.log("service worker registered", reg)
-    })
-    .catch((err) => {
-        console.log("error when registering service worker", err)
-    })
 
 

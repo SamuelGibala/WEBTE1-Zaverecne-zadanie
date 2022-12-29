@@ -24,9 +24,10 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/~xkornhauser/zavzad/",
+  "start_url": ".",
+  "scope": ".",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "portrait-primary",
   "background_color": "#ABABAB",
   "theme_color": "#3176fb",
   "lang": "en"
