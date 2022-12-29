@@ -1,7 +1,7 @@
 import data from '../json/game.json' assert {type: 'json'};
 
 var game = document.getElementById("game");
-var level = 10;
+var level = 1;
 var currentLevel;
 var conversionTable = data.conversion_table;
 var alternativeText = data.alt;
@@ -49,36 +49,26 @@ function fillState(actualPosition){
                     if(level<10) {
                         level++;
                     }
-                    //odtialto
-                    console.log(level);
-                    nextLevel();
-                    //potialto vymazat
-                    //TODO show modal next level, onclick nextLevel()
-
 
                     var divko = document.createElement("div");
                     divko.setAttribute("class","divko");
                     var info = document.createElement("p");
                     info.setAttribute("class","pi");
                     info.innerHTML = "EXCELLENT!!";
-                    var nextLevel = document.createElement("div");
-                    nextLevel.setAttribute("class","nextlevel");
-                    nextLevel.addEventListener("click",function (){
-                        alert("next level");
+                    var neLevel = document.createElement("div");
+                    neLevel.setAttribute("class","nextlevel");
+                    neLevel.addEventListener("click",function (){
+                        nextLevel();
                     })
                     game.appendChild(divko);
                     game.appendChild(info);
-                    game.appendChild(nextLevel);
+                    game.appendChild(neLevel);
 
                 }else {
                     console.log("boom");
                     clearInterval(myInterval);
                     listenersAllowed = false;
-                    //odtialto
-                    console.log(level);
-                    nextLevel();
-                    //potialto vymazat
-                    //TODO show modal replay level, onclick nextLevel()
+
                     var divko = document.createElement("div");
                     divko.setAttribute("class","divko");
                     var infoT = document.createElement("p");
@@ -87,7 +77,7 @@ function fillState(actualPosition){
                     var tryLevel = document.createElement("div");
                     tryLevel.setAttribute("class","trylevel");
                     tryLevel.addEventListener("click",function (){
-                        alert("try level");
+                        nextLevel();
                     })
                     game.appendChild(divko);
                     game.appendChild(infoT);
