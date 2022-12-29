@@ -92,6 +92,58 @@ body{
     background-size: 40%;
     z-index: 9;
 }
+.nextlevel{
+    position: absolute;
+    background-image: url("../img/next.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+    width: 40%;
+    height: 12%;
+    margin-top: 60%;
+    margin-left: 30%;
+    margin-right: 30%;
+    z-index: 9;
+}
+.trylevel{
+    position: absolute;
+    background-image: url("../img/Try.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+    width: 40%;
+    height: 12%;
+    margin-top: 70%;
+    margin-left: 30%;
+    margin-right: 30%;
+    z-index: 9;
+
+}
+.divko{
+    position: absolute;
+    border: black 1px solid;
+    background-color: rgba(170, 170, 170, 0.92);
+    width: 50%;
+    height: 45%;
+    margin-top: 40%;
+    margin-left: 25%;
+    margin-right: 25%;
+    z-index: 8;
+
+
+}
+.pi{
+    position: absolute;
+    text-align: center;
+    width: 40%;
+    height: 20%;
+    margin-top: 53%;
+    margin-left: 30%;
+    margin-right: 30%;
+    color: #3176fb;
+    font-size: 150%;
+    z-index: 9;
+}
 
 /* The Modal (background) */
 .modal {
@@ -103,7 +155,7 @@ body{
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 

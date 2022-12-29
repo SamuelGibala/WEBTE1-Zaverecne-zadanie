@@ -1,7 +1,6 @@
 import data from '../json/game.json' assert {type: 'json'};
-
 var game = document.getElementById("game");
-var level = 3;
+var level = 10;
 var currentLevel;
 var conversionTable = data.conversion_table;
 var alternativeText = data.alt;
@@ -43,13 +42,39 @@ function fillState(actualPosition){
                 if (actualState[poc]===5) {
 
                 }else if(actualState[poc]===9){
-                    console.log("win");
                     clearInterval(myInterval);
                     listenersAllowed = false;
+                    var divko = document.createElement("div");
+                    divko.setAttribute("class","divko");
+                    var info = document.createElement("p");
+                    info.setAttribute("class","pi");
+                    info.innerHTML = "EXCELLENT!!";
+                    var nextLevel = document.createElement("div");
+                    nextLevel.setAttribute("class","nextlevel");
+                    nextLevel.addEventListener("click",function (){
+                        alert("next level");
+                    })
+                    game.appendChild(divko);
+                    game.appendChild(info);
+                    game.appendChild(nextLevel);
+
                 }else {
                     console.log("boom");
                     clearInterval(myInterval);
                     listenersAllowed = false;
+                    var divko = document.createElement("div");
+                    divko.setAttribute("class","divko");
+                    var infoT = document.createElement("p");
+                    infoT.setAttribute("class","pi");
+                    infoT.innerHTML = "OOOOOH CRASH TRY AGAIN!!";
+                    var tryLevel = document.createElement("div");
+                    tryLevel.setAttribute("class","trylevel");
+                    tryLevel.addEventListener("click",function (){
+                        alert("try level");
+                    })
+                    game.appendChild(divko);
+                    game.appendChild(infoT);
+                    game.appendChild(tryLevel);
                 }
 
             }else {
@@ -161,12 +186,12 @@ function prvky(){
     game.appendChild(help);
 }
 function modalWindow(){
-    var lol = document.createElement("info");
-    lol.innerHTML = "<br><br> Crazy highway <br> Cieľom hry je prejsť s autíčkom až do cieľa. Na dráhe ho, ale čaká veľa prekážok ktorým sa musí vyhnúť. <br> Pohyb autíčka: <br> Ovládanie pomocou šípok doprava a doľava <br> Swipe doprava a doľava na telefóne <br> Prajeme vám zábavu pri hraní hry!!!!";
+    var guide = document.createElement("info");
+    guide.innerHTML = "<br><br> Crazy highway <br> Cieľom hry je prejsť s autíčkom až do cieľa. Na dráhe ho, ale čaká veľa prekážok ktorým sa musí vyhnúť. <br> Pohyb autíčka: <br> Ovládanie pomocou šípok doprava a doľava <br> Swipe doprava a doľava na telefóne <br> Prajeme vám zábavu pri hraní hry!!!!";
 
 
     var modalContent = document.getElementById("modal-content");
-    modalContent.appendChild(lol);
+    modalContent.appendChild(guide);
     modalContent.classList.add("modal-content");
 
     let myModal = document.getElementById("myModal");
