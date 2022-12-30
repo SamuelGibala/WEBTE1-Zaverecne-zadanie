@@ -55,25 +55,33 @@ getJson().then((data)=>{
                         clearInterval(myInterval);
                         inBetween = true;
                         listenersAllowed = false;
-                        if(level<10) {
+                        if(level<=9) {
                             level++;
                             setLevelCookie();
+                            var divko = document.createElement("div");
+                            divko.setAttribute("class","divko");
+                            var info = document.createElement("p");
+                            info.setAttribute("class","pi");
+                            info.innerHTML = "EXCELLENT!!";
+                            var neLevel = document.createElement("div");
+                            neLevel.setAttribute("class","nextlevel");
+                            neLevel.addEventListener("click",function (){
+                                inBetween = false;
+                                nextLevel();
+                            })
+                            game.appendChild(divko);
+                            game.appendChild(info);
+                            game.appendChild(neLevel);
+                        }else  {
+                            var divko = document.createElement("div");
+                            divko.setAttribute("class","divko");
+                            var info = document.createElement("p");
+                            info.setAttribute("class","pi");
+                            info.innerHTML = "Congratulations you win our game!!!";
+                            game.appendChild(divko);
+                            game.appendChild(info);
                         }
-    
-                        var divko = document.createElement("div");
-                        divko.setAttribute("class","divko");
-                        var info = document.createElement("p");
-                        info.setAttribute("class","pi");
-                        info.innerHTML = "EXCELLENT!!";
-                        var neLevel = document.createElement("div");
-                        neLevel.setAttribute("class","nextlevel");
-                        neLevel.addEventListener("click",function (){
-                            inBetween = false;
-                            nextLevel();
-                        })
-                        game.appendChild(divko);
-                        game.appendChild(info);
-                        game.appendChild(neLevel);
+
 
                     }else {
                         console.log("boom");
@@ -236,7 +244,7 @@ getJson().then((data)=>{
     }
     function modalWindow(){
         var guide = document.createElement("info");
-        guide.innerHTML = "<br><br> Crazy highway <br> Cieľom hry je prejsť s autíčkom až do cieľa. Na dráhe ho, ale čaká veľa prekážok ktorým sa musí vyhnúť. <br> Pohyb autíčka: <br> Ovládanie pomocou šípok doprava a doľava <br> Swipe doprava a doľava na telefóne <br> Prajeme vám zábavu pri hraní hry!!!!";
+        guide.innerHTML = "<br><br> Crazy highway <br> Cieľom hry je prejsť s autíčkom až do cieľa. Na dráhe ho, ale čaká veľa prekážok ktorým sa musí vyhnúť. <br> Pohyb autíčka: <br> Ovládanie pomocou šípok doprava a doľava <br> Swipe doprava, doľava na telefóne a pomocou senzoru natáčania telefónu<br> Prajeme vám zábavu pri hraní hry!!!!";
     
     
         var modalContent = document.getElementById("modal-content");
@@ -326,7 +334,12 @@ getJson().then((data)=>{
         }
         helpInGame.style.width = String(gameWidth/5 + "px");
         helpInGame.style.height = String(gameHeight/11 + "px");
+
+        const levelsN = document.createElement("div");
+        levelsN.setAttribute("class","levelsN");
+        levelsN.innerHTML = "Level: " + level;
         game.appendChild(helpInGame);
+        game.appendChild(levelsN);
     }
 
     function setCookie(cname,cvalue) {
