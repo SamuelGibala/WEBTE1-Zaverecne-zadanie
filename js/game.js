@@ -62,7 +62,7 @@ getJson().then((data)=>{
                             divko.setAttribute("class","divko");
                             var info = document.createElement("p");
                             info.setAttribute("class","pi");
-                            info.innerHTML = "EXCELLENT!!";
+                            info.innerHTML = "<p class='aaa'> EXCELLENT!! </p>";
                             var neLevel = document.createElement("div");
                             neLevel.setAttribute("class","nextlevel");
                             neLevel.addEventListener("click",function (){
@@ -77,7 +77,7 @@ getJson().then((data)=>{
                             divko.setAttribute("class","divko");
                             var info = document.createElement("p");
                             info.setAttribute("class","pi");
-                            info.innerHTML = "Congratulations you win our game!!!";
+                            info.innerHTML = "<p class='aaa'> Congratulations you passed all levels!!! <br> We will try to make new levels soon </p>";
                             game.appendChild(divko);
                             game.appendChild(info);
                         }
@@ -93,7 +93,7 @@ getJson().then((data)=>{
                         divko.setAttribute("class","divko");
                         var infoT = document.createElement("p");
                         infoT.setAttribute("class","pi");
-                        infoT.innerHTML = "OOOOOH CRASH TRY AGAIN!!";
+                        infoT.innerHTML = "<p class='aaa'> OOPS, CRASH, TRY AGAIN!! </p>";
                         var tryLevel = document.createElement("div");
                         tryLevel.setAttribute("class","trylevel");
                         tryLevel.addEventListener("click",function (){
@@ -244,7 +244,19 @@ getJson().then((data)=>{
     }
     function modalWindow(){
         var guide = document.createElement("info");
-        guide.innerHTML = "<br><br> Crazy highway <br> Cieľom hry je prejsť s autíčkom až do cieľa. Na dráhe ho, ale čaká veľa prekážok ktorým sa musí vyhnúť. <br> Pohyb autíčka: <br> Ovládanie pomocou šípok doprava a doľava <br> Swipe doprava, doľava na telefóne a pomocou senzoru natáčania telefónu<br> Prajeme vám zábavu pri hraní hry!!!!";
+        guide.innerHTML = "<br><h3> Crazy highway </h3>" +
+            "<p class='helpText'> The goal of the game is to drive the car to the finish line. But there are many obstacles waiting for him on the track, which you have to avoid</p>" +
+            "<h4> Car movement on the PC: </h4>" +
+            "<ul><li> Right arrow to move the car one lane to the right,</li> " +
+            "<li> Left arrow to move the car one lane to the left.</li></ul> " +
+            "<h4> Car movement on the phone: </h4>" +
+            "<ul><li>Swipe right to move the car one lane to the right,</li>" +
+            "<li>Swipe left to move the car one lane to the left,</li>" +
+            "<li>Tilt the phone to the right to move the car one lane to the right,</li>" +
+            "<li>Tilt the phone to the left to move the car one lane to the left.</li></ul>" +
+            "<p class='helpText'>Enjoy the game!</p>" +
+            "<p id='copyright'> © 2022 Samuel Gibala, Matúš Kornhauser <br>" +
+            "Designed by Sabina Čilliková </p>";
     
     
         var modalContent = document.getElementById("modal-content");

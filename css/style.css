@@ -12,6 +12,7 @@ img{
 body{
     height: 100%;
     margin: 0;
+    overflow: hidden;
 }
 
 #game{
@@ -53,11 +54,11 @@ body{
 .title{
     position: absolute;
     background-image: url("../img/title.png");
-    background-size:80%;
+    background-size:50%;
     background-repeat: no-repeat;
     background-position: center;
     width: 90%;
-    height: 40%;
+    height: 50%;
     margin-top: 0.5%;
     margin-left: 5%;
     margin-right: 5%;
@@ -72,10 +73,15 @@ body{
     background-size: 90%;
     width: 40%;
     height: 12%;
-    margin-top: 60%;
+    margin-top: 68%;
     margin-left: 30%;
     margin-right: 30%;
     z-index: 9;
+}
+
+.aaa{
+    padding-top: 10px;
+    font-size: 3vh;
 }
 
 .help{
@@ -86,7 +92,7 @@ body{
     background-size: 80%;
     width: 40%;
     height: 12%;
-    margin-top: 76%;
+    margin-top: 84%;
     margin-left: 30%;
     margin-right: 40%;
     z-index: 9;
@@ -137,6 +143,35 @@ body{
     z-index: 9;
 
 }
+
+body{
+    background-image: url("../img/background.png");
+    background-size: 50%;
+}
+
+*{
+    font-family: "Comic Sans MS", serif;
+}
+
+li, .helpText{
+    font-size: 2vh;
+}
+
+h3{
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+
+h4{
+    font-size: 2.3vh;
+    font-weight: bold;
+}
+
+#copyright{
+    font-size: 1.5vh;
+    font-style: italic;
+}
+
 .divko{
     position: absolute;
     border: black 1px solid;
@@ -155,7 +190,7 @@ body{
     text-align: center;
     width: 40%;
     height: 10%;
-    margin-top: 45%;
+    margin-top: 30%;
     margin-left: 30%;
     margin-right: 30%;
     color: #3176fb;
@@ -180,12 +215,13 @@ body{
 /* Modal Content/Box */
 .modal-content {
     background-color: #aaaaaa;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 6% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     color: #3176fb;
     font-size: 150%;
+    overflow: hidden;
 }
 
 /* The Close Button */
